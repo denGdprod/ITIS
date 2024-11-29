@@ -30,13 +30,17 @@ namespace EasyCalc
                     result = number1 * number2;
                     break;
                 case '/':
+                    if (number2 == 0)
+                    {
+                        Console.WriteLine("Ошибка: Деление на ноль невозможно.");
+                        return;
+                    }
                     result = number1 / number2;
                     break;
                 default:
                     Console.WriteLine("Неверный оператор");
                     return;
             }
-
             Console.WriteLine($"Результат: {number1} {operation} {number2} = {result}");
         }
     }
