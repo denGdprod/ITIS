@@ -1,3 +1,4 @@
 EasyCalc/**/*.csproj
+bin/
 obj/
 .vs/
