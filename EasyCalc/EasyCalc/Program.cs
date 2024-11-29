@@ -4,7 +4,6 @@ class Program
 {
 	static double GetNumberFromUser(string prompt)
 	{
-		double number;
 		while (true)
 		{
 			Console.WriteLine(prompt);
