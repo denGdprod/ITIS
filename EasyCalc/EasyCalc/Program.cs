@@ -2,61 +2,44 @@
 
 class Program
 {
-	static double GetNumberFromUser(string prompt)
-	{
-		while (true)
-		{
-			Console.WriteLine(prompt);
-			string input = Console.ReadLine();
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Простой калькулятор");
+        Console.WriteLine("Введите первое число:");
+        double number1 = Convert.ToDouble(Console.ReadLine());
 
-			if (double.TryParse(input, out number))
-			{
-				return number;
-			}
-			else
-			{
-				Console.WriteLine("Ошибка: Введите корректное число.");
-			}
-		}
-	}
-	static void Main(string[] args)
-	{
-		Console.WriteLine("Простой калькулятор");
+        Console.WriteLine("Введите оператор (+, -, *, /):");
+        char operation = Convert.ToChar(Console.ReadLine());
 
-		double number1 = GetNumberFromUser("Введите первое число:");
+        Console.WriteLine("Введите второе число:");
+        double number2 = Convert.ToDouble(Console.ReadLine());
 
-		Console.WriteLine("Введите оператор (+, -, *, /):");
+        double result = 0;
 
-		char operation = Convert.ToChar(Console.ReadLine());
+        switch (operation)
+        {
+            case '+':
+                result = number1 + number2;
+                break;
+            case '-':
+                result = number1 - number2;
+                break;
+            case '*':
+                result = number1 * number2;
+                break;
+            case '/':
+                if (number2 == 0)
+                {
+                    Console.WriteLine("Ошибка: Деление на ноль невозможно.");
+                    return;
+                }
+                result = number1 / number2;
+                break;
+            default:
+                Console.WriteLine("Неверный оператор");
+                return;
+        }
 
-		double number2 = GetNumberFromUser("Введите второе число:");
-
-		double result = 0;
-
-		switch (operation)
-		{
-			case '+':
-				result = number1 + number2;
-				break;
-			case '-':
-				result = number1 - number2;
-				break;
-			case '*':
-				result = number1 * number2;
-				break;
-			case '/':
-				if (number2 == 0)
-				{
-					Console.WriteLine("Ошибка: Деление на ноль невозможно.");
-					return;
-				}
-				result = number1 / number2;
-				break;
-			default:
-				Console.WriteLine("Неверный оператор");
-				return;
-		}
-
-		Console.WriteLine($"Результат: {number1} {operation} {number2} = {result}");
-	}
+        Console.WriteLine($"Результат: {number1} {operation} {number2} = {result}");
+    }
 }
